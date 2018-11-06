@@ -1,0 +1,38 @@
+body {
+    background-color: white;
+    padding: 0;
+    margin: 0;
+    font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+    line-height: 32px;
+    letter-spacing: 0ex;
+    position: relative;
+    overflow: auto;
+}
+
+.headBoard {
+    text-align: center;
+    background-color: brown;
+    color: white;
+}
+
+header {
+    color: white;
+}
+
+.field{
+    margin-top: 5px;
+    width: 98%;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: light-gray;
+}
+
+.btn {
+    border: brown;
+    background-color: brown;
+    color: white;
+}
+
+p {
+    color: black;
+}

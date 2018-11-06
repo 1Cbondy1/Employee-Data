@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>Employee Data</title>
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Bootstrap CDN-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <!-- Firebase Reference -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
+  <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="jumbotron headBoard">
+      <h2>Employee Info</h2>
+      <p>Add data from admin</p>
+    </div>
+
+    <div class="jumbotron">
+      <table class="table">
+        <thead>
+          <tr>
+            <!-- The scope attribute specifies that this is a header for a column -->
+            <th scope="col">Employee Name</th>
+            <th scope="col">Role</th>
+            <th scope="col">Start Day</th>
+            <th scope="col">Months Worked</th>
+            <th scope="col">Monthly Rate ($)</th>
+            <th scope="col">Total Billed ($)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="employee-name">Scott</td>
+            <td id="role">CTO</td>
+            <td id="start-day">12/16/1991</td>
+            <td id="months-worked">322</td>
+            <td id="monthly-rate">123</td>
+            <td id="total-billed">567</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <form class="cardBoard">
+
+          <div class="form-group">
+            <label for="addName">Employee Name: </label>
+            <br>
+            <input type="text" class="search-control field" id="addName"  placeholder="">
+          </div>
+
+          <div class="form-group">
+            <label for="addRole">Role: </label>
+            <br>
+            <input type="text" class="search-control field" id="addRole" placeholder="">
+
+          <div class="form-group">
+            <label for="addStartDay">Start Day: </label>
+            <br>
+            <input type="text" class="search-control field" id="addStartDay"  placeholder="">
+          </div>
+
+          <div class="form-group">
+            <label for="addRate">Monthly Rate ($): </label>
+            <br>
+            <input type="text" class="search-control field" id="addRate" placeholder="">
+
+            <p></p>
+
+          <button type="submit" class="btn btn-primary" id="addData" >Add Data List</button>
+
+  </div>
+
+  <!-- JavaScript -->
+  <script src="javascript/logic.js"></script>
+
+</body>
+
+</html>
