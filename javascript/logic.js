@@ -2,13 +2,19 @@
 // Make sure to match the configuration to the script version number in the HTML
 // (Ex. 3.0 != 3.7.0)
 
-// var config = {
+var config = {
+  apiKey: "AIzaSyCs07CLz-PZ1b1lwSkBT3LZcuJm0oMOysc",
+  authDomain: "employeedata-ed7c4.firebaseapp.com",
+  databaseURL: "https://employeedata-ed7c4.firebaseio.com",
+  projectId: "employeedata-ed7c4",
+  storageBucket: "employeedata-ed7c4.appspot.com",
+  messagingSenderId: "835517334784"
+  };
 
-//   };
-// firebase.initializeApp(config);
+firebase.initializeApp(config);
 
 // // Create a variable to reference the database
-// var database = firebase.database();
+var database = firebase.database();
 
 
 // Initial Values
@@ -21,70 +27,50 @@ var initialRate = "No rate";
 
 // --------------------------------------------------------------
 
-// At the initial load and subsequent value changes, get a snapshot of the stored data.
-// This function allows you to update your page in real-time when the firebase database changes.
-// database.ref().on("value", function(snapshot) {
-
-//   // If Firebase has a highPrice and highBidder stored (first case)
-//   if (snapshot.child("highBidder").exists() && snapshot.child("highPrice").exists()) {
-
-//     // Set the variables for highBidder/highPrice equal to the stored values in firebase.
-//     highBidder = snapshot.val().highBidder;
-//     highPrice = snapshot.val().highPrice;
-
-
-//     // Change the HTML to reflect the stored values
-//     $("#highest-bidder").text(highBidder);
-//     $("#highest-price").text(highPrice);
-
-
-//     // Print the data to the console.
-//     $("#highest-bidder").text(highBidder);
-//     $("#highest-price").text(highPrice);
-//   }
-
-//   // Else Firebase doesn't have a highPrice/highBidder, so use the initial local values.
-//   else {
-
-//     // Change the HTML to reflect the initial values
-//     $("#highest-bidder").text(highBidder);
-//     $("#highest-price").text(highPrice);
-
-
-//     // Print the data to the console.
-//     console.log("highBidder: " + highBidder);
-//     console.log("highPrice: " + highPrice);
-//   }
-
-
-// // If any errors are experienced, log them to console.
-// }, function(errorObject) {
-//   console.log("The read failed: " + errorObject.code);
-// });
+var name = "";
+        var role = "";
+        var startDate = "";
+        var monthlyRate = "";
 
 // --------------------------------------------------------------
 
 // Whenever a user clicks the submit-bid button
-$("#submit-bid").on("click", function(event) {
+$("#addData").on("click", function(event) {
   // Prevent form from submitting
   event.preventDefault();
 
   // Get the input values
-  var name = $("#addName").val();
-  var role = $("#addRole").val();
-  var startDay = $("#addStartDay").val();
-  var rate = $("#addRate").val();
-  var monthsWorked = 0;
-  var totalBilled = 0;
+          // var name = $("#addName").val();
+          // var role = $("#addRole").val();
+          // var startDay = $("#addStartDay").val();
+          // var rate = $("#addRate").val();
+          // var monthsWorked = 0;
+          // var totalBilled = 0;
 
+
+  var name = $("#addName").val().trim();
+  var role = $("#addRole").val().trim();
+  var startDate = parseInt($("#addStartDay").val());
+  var monthlyRate = parseInt($("#addRate").val());
+
+  database.ref().push({
+    name: name,
+    role: role,
+    startDate: startDate,
+    monthlyRate: monthlyRate
+    });
 
   // Log the Bidder and Price (Even if not the highest)
+                  // console.log(name);
+                  // console.log(role);
+                  // console.log(startDay);
+                  // console.log(rate);
+                  // console.log(monthsWorked);
+                  // console.log(totalBilled);
+
   console.log(name);
   console.log(role);
-  console.log(startDay);
-  console.log(rate);
-  console.log(monthsWorked);
-  console.log(totalBilled);
+  console.log(startDate);
 
     // Save info in Firebase
   // database.ref().push({
