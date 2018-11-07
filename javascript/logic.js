@@ -30,9 +30,7 @@ var initialRate = "No rate";
 var name = "";
 var role = "";
 var startDate = "";
-var monthsWorked = "";
 var monthlyRate = "";
-var totalBilled = "";
 
 
 // --------------------------------------------------------------
@@ -64,9 +62,9 @@ $("#addData").on("click", function(event) {
     name: name,
     role: role,
     startDate: startDate,
-    monthsWorked: monthsWorked,
-    monthlyRate: monthlyRate,
-    totalBilled: totalBilled
+
+    monthlyRate: monthlyRate
+
 
     });
 
