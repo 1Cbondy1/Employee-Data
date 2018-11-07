@@ -28,9 +28,12 @@ var initialRate = "No rate";
 // --------------------------------------------------------------
 
 var name = "";
-        var role = "";
-        var startDate = "";
-        var monthlyRate = "";
+var role = "";
+var startDate = "";
+var monthsWorked = "";
+var monthlyRate = "";
+var totalBilled = "";
+
 
 // --------------------------------------------------------------
 
@@ -50,51 +53,42 @@ $("#addData").on("click", function(event) {
 
   var name = $("#addName").val().trim();
   var role = $("#addRole").val().trim();
-  var startDate = parseInt($("#addStartDay").val());
+  var startDate = $("#addStartDay").val();
   var monthlyRate = parseInt($("#addRate").val());
+  var startFormat = "MM/DD/YYYY";
+  convertedDate = moment(startDate, startFormat);
+
+  // Save info in Firebase
 
   database.ref().push({
     name: name,
     role: role,
     startDate: startDate,
-    monthlyRate: monthlyRate
+    monthsWorked: monthsWorked,
+    monthlyRate: monthlyRate,
+    totalBilled: totalBilled
+
     });
 
+  var monthsWorked = moment().diff(convertedDate, "months"); // positive number
+  var totalBilled = monthsWorked * monthlyRate;
+
+
   // Log the Bidder and Price (Even if not the highest)
-                  // console.log(name);
-                  // console.log(role);
-                  // console.log(startDay);
-                  // console.log(rate);
-                  // console.log(monthsWorked);
-                  // console.log(totalBilled);
 
   console.log(name);
   console.log(role);
   console.log(startDate);
-
-    // Save info in Firebase
-  // database.ref().push({
-  //   name: name,
-  //   role: role,
-  //   start-day: startDay,
-  //   monthly-rate: rate,
-  //   months-worked: monthsWorked,
-  //   total-billed: totalBilled
-  // });
-
-  // console.log("Employee Name: " + name);
-  // console.log("Role: " + name);
-  // console.log("Employee Name: " + name);
-  // console.log("Employee Name: " + name);
-  // console.log("Employee Name: " + name);
-  // console.log("Employee Name: " + name);
+  console.log(monthsWorked);
+  console.log(monthlyRate);
+  console.log(totalBilled); 
 
 // Change the HTML to reflect the new high price and bidder
   $("#employee-name").append(name);
   $("#role").append(role);
-  $("#start-day").append(startDay);
+  $("#start-day").append(startDate);
   $("#months-worked").append(monthsWorked);
-  $("#monthly-rate").append(rate);
+  $("#monthly-rate").append(monthlyRate);
   $("#total-billed").append(totalBilled);
 
 });
